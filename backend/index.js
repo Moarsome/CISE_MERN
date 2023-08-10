@@ -13,7 +13,15 @@ const app = express();
 connectDB();
 
 // cors
-app.use(cors({ origin: true, credentials: true }));
+//app.use(cors({ origin: true, credentials: true }));
+
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
 
 // Init Middleware
 app.use(express.json({ extended: false }));
