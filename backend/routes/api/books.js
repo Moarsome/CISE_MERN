@@ -4,6 +4,7 @@ const router = express.Router();
 // Load Book model
 const Book = require('../../models/Book');
 
+/*
 // Add Access Control Allow Origin headers
 router.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -13,6 +14,8 @@ router.use((req, res, next) => {
   );
   next();
 });
+*/
+router.use(cors());
 
 // @route GET api/books/test
 // @description tests books route
