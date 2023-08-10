@@ -11,7 +11,7 @@ function ShowBookDetails(props) {
 
   useEffect(() => {
     axios
-      .get(`https://cise-mern-backend-7evaxj25i-moarsome.vercel.app/api/books/${id}`)
+      .get(`https://cise-mern-backend-bk78d57i9-moarsome.vercel.app/api/books/${id}`)
       .then((res) => {
         setBook(res.data);
       })
@@ -22,7 +22,7 @@ function ShowBookDetails(props) {
 
   const onDeleteClick = (id) => {
     axios
-      .delete(`https://cise-mern-backend-7evaxj25i-moarsome.vercel.app/api/books/${id}`)
+      .delete(`https://cise-mern-backend-bk78d57i9-moarsome.vercel.app/api/books/${id}`)
       .then((res) => {
         navigate('/');
       })
