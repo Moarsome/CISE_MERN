@@ -4,6 +4,16 @@ const router = express.Router();
 // Load Book model
 const Book = require('../../models/Book');
 
+// Add Access Control Allow Origin headers
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // @route GET api/books/test
 // @description tests books route
 // @access Public
@@ -57,3 +67,43 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
+/*
+const MongoClient = require("../../models/Book");
+const { ObjectId } = require("mongodb");
+
+export default async (req, res) => {
+  const client = await MongoClient();
+  await client.connect();
+  const db = client.db("DriveThruCloset");
+
+  const { method } = req;
+
+  switch (method) {
+    case "GET":
+      let getResponse = await db.collection("books").find({}).toArray();
+      res.status(200).json(getResponse);
+      break;
+    case "POST":
+      const { name, description, type } = req.body;
+      const { filename } = req.file;
+
+      let postResponse = await db
+        .collection("clothing")
+        .insert({ name, description, filename, type });
+      res.status(200).json(postResponse);
+      break;
+    case "DELETE":
+      const { _id } = req.body;
+
+      let deleteResponse = await db
+        .collection("clothing")
+        .deleteOne({ _id: ObjectId(_id) });
+      res.status(200).json(deleteResponse);
+      break;
+    default:
+      res.setHeader("Allow", ["GET", "PUT"]);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
+  client.close();
+};
+*/
