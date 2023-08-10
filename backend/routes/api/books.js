@@ -26,6 +26,10 @@ router.get('/test', (req, res) => res.send('book route testing!'));
 // @description Get all books
 // @access Public
 router.get('/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   Book.find()
     .then(books => res.json(books))
     .catch(err => res.status(404).json({ nobooksfound: 'No Books found' }));
@@ -35,6 +39,10 @@ router.get('/', (req, res) => {
 // @description Get single book by id
 // @access Public
 router.get('/:id', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   Book.findById(req.params.id)
     .then(book => res.json(book))
     .catch(err => res.status(404).json({ nobookfound: 'No Book found' }));
@@ -44,6 +52,10 @@ router.get('/:id', (req, res) => {
 // @description add/save book
 // @access Public
 router.post('/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   Book.create(req.body)
     .then(book => res.json({ msg: 'Book added successfully' }))
     .catch(err => res.status(400).json({ error: 'Unable to add this book' }));
@@ -53,6 +65,10 @@ router.post('/', (req, res) => {
 // @description Update book
 // @access Public
 router.put('/:id', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   Book.findByIdAndUpdate(req.params.id, req.body)
     .then(book => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
@@ -64,6 +80,10 @@ router.put('/:id', (req, res) => {
 // @description Delete book by id
 // @access Public
 router.delete('/:id', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
   Book.findByIdAndRemove(req.params.id, req.body)
     .then(book => res.json({ mgs: 'Book entry deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such a book' }));
