@@ -1,8 +1,8 @@
 // app.js
 
 const express = require('express');
-const connectDB = require('./config/db');
 const cors = require('cors');
+const connectDB = require('./config/db');
 
 // routes
 const books = require('./routes/api/books');
@@ -16,12 +16,12 @@ connectDB();
 app.use(cors({ origin: true, credentials: true }));
 
 const corsConfig = {
-    origin: '',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
-}
-app.use(cors(corsConfig))
-app.options("", cors(corsConfig))
+  origin: '',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+};
+app.use(cors(corsConfig));
+app.options('', cors(corsConfig));
 
 // Init Middleware
 app.use(express.json({ extended: false }));
@@ -33,4 +33,5 @@ app.use('/api/books', books);
 
 const port = process.env.PORT || 8082;
 
+// eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Server running on port ${port}`));
