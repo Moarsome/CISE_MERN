@@ -15,6 +15,8 @@ connectDB();
 // cors
 app.use(cors({ origin: true, credentials: true }));
 
+console.log("Hello");
+
 const corsConfig = {
     origin: '',
     credentials: true,
