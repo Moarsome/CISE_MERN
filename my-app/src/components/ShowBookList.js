@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import axios from 'axios';
@@ -13,29 +16,27 @@ function ShowBookList() {
       .then((res) => {
         setBooks(res.data);
       })
-      .catch((err) => {
+      .catch((_err) => {
         console.log('Error from ShowBookList');
       });
   }, []);
 
-  const bookList =
-    books.length === 0
-      ? 'there is no book record!'
-      : books.map((book, k) => <BookCard book={book} key={k} />);
+  // eslint-disable-next-line react/no-array-index-key
+  const bookList = books.length === 0 ? 'there is no book record!' : books.map((book, k) => <BookCard book={book} key={k} />);
 
   return (
-    <div className='ShowBookList'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-12'>
+    <div className="ShowBookList">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
             <br />
-            <h2 className='display-4 text-center'>Books List</h2>
+            <h2 className="display-4 text-center">Books List</h2>
           </div>
 
-          <div className='col-md-11'>
+          <div className="col-md-11">
             <Link
-              to='/create-book'
-              className='btn btn-outline-warning float-right'
+              to="/create-book"
+              className="btn btn-outline-warning float-right"
             >
               + Add New Book
             </Link>
@@ -45,7 +46,7 @@ function ShowBookList() {
           </div>
         </div>
 
-        <div className='list'>{bookList}</div>
+        <div className="list">{bookList}</div>
       </div>
     </div>
   );
