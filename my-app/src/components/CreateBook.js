@@ -1,14 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-duplicates
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-// eslint-disable-next-line import/no-duplicates
 import { useNavigate } from 'react-router-dom';
 
-// eslint-disable-next-line no-unused-vars
-function CreateBook(_props) {
+const CreateBook = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
   const [book, setBook] = useState({
@@ -29,7 +25,7 @@ function CreateBook(_props) {
 
     axios
       .post('https://cise-mern-backend.vercel.app/api/books', book)
-      .then((_res) => {
+      .then((res) => {
         setBook({
           title: '',
           isbn: '',
@@ -42,96 +38,95 @@ function CreateBook(_props) {
         // Push to /
         navigate('/');
       })
-      .catch((_err) => {
+      .catch((err) => {
         console.log('Error in CreateBook!');
       });
   };
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
-    <div className="CreateBook">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
+    <div className='CreateBook'>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-md-8 m-auto'>
             <br />
-            <Link to="/" className="btn btn-outline-warning float-left">
+            <Link to='/' className='btn btn-outline-warning float-left'>
               Show Book List
             </Link>
           </div>
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Add Book</h1>
-            <p className="lead text-center">Create new book</p>
+          <div className='col-md-8 m-auto'>
+            <h1 className='display-4 text-center'>Add Book</h1>
+            <p className='lead text-center'>Create new book</p>
 
             <form noValidate onSubmit={onSubmit}>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Title of the Book"
-                  name="title"
-                  className="form-control"
+                  type='text'
+                  placeholder='Title of the Book'
+                  name='title'
+                  className='form-control'
                   value={book.title}
                   onChange={onChange}
                 />
               </div>
               <br />
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="ISBN"
-                  name="isbn"
-                  className="form-control"
+                  type='text'
+                  placeholder='ISBN'
+                  name='isbn'
+                  className='form-control'
                   value={book.isbn}
                   onChange={onChange}
                 />
               </div>
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Author"
-                  name="author"
-                  className="form-control"
+                  type='text'
+                  placeholder='Author'
+                  name='author'
+                  className='form-control'
                   value={book.author}
                   onChange={onChange}
                 />
               </div>
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Describe this book"
-                  name="description"
-                  className="form-control"
+                  type='text'
+                  placeholder='Describe this book'
+                  name='description'
+                  className='form-control'
                   value={book.description}
                   onChange={onChange}
                 />
               </div>
 
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="date"
-                  placeholder="published_date"
-                  name="published_date"
-                  className="form-control"
+                  type='date'
+                  placeholder='published_date'
+                  name='published_date'
+                  className='form-control'
                   value={book.published_date}
                   onChange={onChange}
                 />
               </div>
-              <div className="form-group">
+              <div className='form-group'>
                 <input
-                  type="text"
-                  placeholder="Publisher of this Book"
-                  name="publisher"
-                  className="form-control"
+                  type='text'
+                  placeholder='Publisher of this Book'
+                  name='publisher'
+                  className='form-control'
                   value={book.publisher}
                   onChange={onChange}
                 />
               </div>
 
               <input
-                type="submit"
-                className="btn btn-outline-warning btn-block mt-4"
+                type='submit'
+                className='btn btn-outline-warning btn-block mt-4'
               />
             </form>
           </div>
@@ -139,6 +134,6 @@ function CreateBook(_props) {
       </div>
     </div>
   );
-}
+};
 
 export default CreateBook;
